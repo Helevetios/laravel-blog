@@ -13,21 +13,22 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-lg p-4">
         <div class="container">
             <a class="navbar-brand" href="#">Laravel Blog</a>
-            <button class="navbar-toggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
-                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler mb-3" type="button" data-bs-toggle="offcanvas" href="#offcanvasExample"
+                role="button" aria-controls="offcanvasExample">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
-                <form action="" method="POST" class="col-md-10 m-auto">
+                <form action="" method="POST" class="col-md-10 m-auto mb-2">
                     @csrf
-                    <input type="text" class="form-control shadow-lg">
+                    <input type="text" class="form-control shadow-lg mt-2">
                 </form>
-                <ul class="navbar-nav me-auto">
-                    <a class="btn btn-success mt-1" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+
+                <div class="m-auto text-center">
+                    <a class="btn btn-success" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
                         aria-controls="offcanvasExample">
                         Menú
                     </a>
-                </ul>
+                </div>
             </div>
         </div>
     </nav>

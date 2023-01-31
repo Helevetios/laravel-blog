@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/', function () {
-    return view('blog.home');
-});
+Route::get('/', [HomeController::class, 'home'])->name('blog.home');
 
 Route::get('register', function () {
     return view('auth.register');
@@ -31,10 +30,18 @@ Route::get('login', function () {
 
 Route::post('register', [RegisterController::class, 'register'])->name('register');
 Route::post('login', [LoginController::class, 'login'])->name('login');
-Route::post('logout', [LogoutController::class, 'logout'])->middleware('auth')->name('logout');
+Route::get('logout', [LogoutController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::middleware(['auth', 'verifAdmin'])->group(function () {
     Route::get('admin', function () {
-        return ('admin');
+        return view('admin.admin');
     })->name('admin.view');
+
+    Route::get('admin/categories/add', function () {
+        return view('admin.add_category');
+    })->name('categories.add.view');
+
+    Route::get('admin/categories', [CategoryController::class, 'category'])->name('categories.view');
+
+    Route::post('admin/categories/store', [CategoryController::class, 'categoryStore'])->name('categoryStore');
 });

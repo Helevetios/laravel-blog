@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
-    <div class="container mb-5">
+    <div class="container">
         <div class="mt-5">
             <h1 class="text-primary">Reciente</h1>
             <h5 class="text-secondary">Últimas noticias</h5>
@@ -74,22 +74,26 @@
             <hr class="shadow-lg">
             <button type="submit" class="btn btn-primary btn-lg mb-3 shadow-lg">Ver Más</button>
             <div class="row">
-                <div class="col-md-4 mb-5">
-                    <div class="card shadow-lg">
-                        <img src="https://wallpapercave.com/wp/wp10710299.jpg" class="card-img" alt="..."
-                            height="400px" style="object-fit: cover;object-position: 20% 10%;">
-                        <div class="card-img-overlay">
-                            <div class="card-body position-absolute bottom-0 end-90">
-                                <h5 class="card-title text-white fs-4 fw-bolder" style="text-shadow: -10px 10px 20px black">
-                                    Ciencia
-                                </h5>
-                                <button class="btn btn-success btn-sm shadow-lg">Explorar</button>
+                @foreach ($categories as $category)
+                    <div class="col-md-4 mb-5">
+                        <div class="card shadow-lg">
+                            <img src="{{ asset('storage') . '/' . $category->image }}" class="card-img" alt="..."
+                                height="400px" style="object-fit: cover;object-position: 20% 10%;">
+                            <div class="card-img-overlay">
+                                <div class="card-body position-absolute bottom-0 end-90">
+                                    <h5 class="card-title text-white fs-4 fw-bolder"
+                                        style="text-shadow: -10px 10px 20px black">
+                                        {{$category->name}}
+                                    </h5>
+                                    <button class="btn btn-success btn-sm shadow-lg">Explorar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
+
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title fs-2 fw-bolder" id="offcanvasExampleLabel">Menú</h5>
@@ -114,11 +118,8 @@
                                 <a href=""
                                     class="list-group-item list-group-item-action fw-bold text-primary">Guardado</a>
                                 <a href="" class="list-group-item list-group-item-action fw-bold text-primary">Likes</a>
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button type="submit"
-                                        class="list-group-item list-group-item-action fw-bold text-primary">Logout</button>
-                                </form>
+                                <a href="{{ route('logout') }}"
+                                    class="list-group-item list-group-item-action fw-bold text-primary">Logout</a>
                             </ul>
                         </div>
                     </div>
