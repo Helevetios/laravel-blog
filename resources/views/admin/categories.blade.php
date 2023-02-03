@@ -28,10 +28,15 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="{{ route('categoryUpdate', $category->id) }}" class="btn btn-sm btn-primary">Edit</a>
                             </td>
                             <td>
-                                <button class="btn btn-sm btn-danger">Delete</button>
+                                <form action="{{ route('categoryDestroy', $category->id) }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-sm btn-danger"
+                                        onclick="return confirm('¿Estas seguro de borrar este elemento?')">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -39,7 +44,7 @@
             </table>
         </div>
         <div class="float-end">
-            {{$categories->links()}}
+            {{ $categories->links() }}
         </div>
     </div>
 @endsection

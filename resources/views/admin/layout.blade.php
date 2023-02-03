@@ -26,7 +26,7 @@
                         <a class="nav-link" href="{{ route('categories.view') }}">Categorias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Posts</a>
+                        <a class="nav-link" href="{{ route('posts.view') }}">Posts</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/">Visitar Sitio</a>

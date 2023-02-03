@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -44,4 +45,22 @@ Route::middleware(['auth', 'verifAdmin'])->group(function () {
     Route::get('admin/categories', [CategoryController::class, 'category'])->name('categories.view');
 
     Route::post('admin/categories/store', [CategoryController::class, 'categoryStore'])->name('categoryStore');
+
+    Route::delete('admin/categories/delete/{id}', [CategoryController::class, 'categoryDestroy'])->name('categoryDestroy');
+
+    Route::get('admin/categories/update/{id}', [CategoryController::class, 'categoryUpdate'])->name('categoryUpdate');
+
+    Route::post('admin/category/update/{id}', [CategoryController::class, 'update'])->name('updateCategory');
+
+    Route::get('admin/posts', [PostController::class, 'posts'])->name('posts.view');
+
+    Route::get('admin/posts/add', [PostController::class, 'add'])->name('add.post');
+
+    Route::post('admin/posts/store', [PostController::class, 'addStore'])->name('addStore');
+
+    Route::delete('admin/posts/delete/{id}', [PostController::class, 'postDelete'])->name('postDelete');
+
+    Route::get('admin/posts/edit/{id}', [PostController::class, 'postEdit'])->name('postEdit');
+
+    Route::post('admin/posts/update/{id}', [PostController::class, 'edit'])->name('edit.post');
 });
