@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -24,9 +27,9 @@
                 </form>
 
                 <div class="m-auto text-center">
-                    <a class="btn btn-success" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                    <a class="btn btn-lg btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
                         aria-controls="offcanvasExample">
-                        Menú
+                        <i class="fa-solid fa-bars"></i>
                     </a>
                 </div>
             </div>

@@ -16,6 +16,7 @@
                             <th>Image</th>
                             <th>Description</th>
                             <th>Category</th>
+                            <th>Body</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -31,6 +32,7 @@
                                 </td>
                                 <td>{{ $post->description }}</td>
                                 <td>{{ $post->category->name }}</td>
+                                <td>{{ $post->body }}</td>
                                 <td>
                                     <a href="{{ route('postEdit', $post->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                 </td>
