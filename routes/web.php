@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,3 +65,13 @@ Route::middleware(['auth', 'verifAdmin'])->group(function () {
 
     Route::post('admin/posts/update/{id}', [PostController::class, 'edit'])->name('edit.post');
 });
+
+Route::get('categories', [HomeController::class, 'categories'])->name('categories');
+
+Route::get('post/{id}', [HomeController::class, 'postView'])->name('postView');
+
+Route::post('/posts/{post}/like', [LikeController::class, 'like'])->name('posts.like');
+
+Route::delete('/posts/{post}/unlike', [LikeController::class, 'unlike'])->name('posts.unlike');
+
+Route::get('user/likes',[HomeController::class, 'likes'])->name('likes');

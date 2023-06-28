@@ -1,6 +1,6 @@
 @extends('auth.layout')
 
-@section('title', 'Login')
+@section('title', 'Portfolio Dev | Login')
 
 @section('content')
     <div class="container">

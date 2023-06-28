@@ -15,7 +15,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-lg p-4">
         <div class="container">
-            <a class="navbar-brand" href="#">Laravel Blog</a>
+            <a class="navbar-brand" href="/">Portfolio Dev</a>
             <button class="navbar-toggler mb-3" type="button" data-bs-toggle="offcanvas" href="#offcanvasExample"
                 role="button" aria-controls="offcanvasExample">
                 <span class="navbar-toggler-icon"></span>
@@ -36,6 +36,54 @@
         </div>
     </nav>
     @yield('content')
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title fs-2 fw-bolder" id="offcanvasExampleLabel">Menú</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            @guest
+                <div class="mb-3">
+                    Entra o registrate para guardar tus posts favoritos
+                </div>
+            @endguest
+
+            <div class="mb-3 ">
+                <input type="text" class="form-control" placeholder="Search">
+                <button class="btn btn-sm btn-primary mt-2">Search</button>
+            </div>
+
+            @auth
+                <div>
+                    <div class="col-md-12">
+                        <ul class="list-group shadow-lg">
+                            @if (auth()->user()->role == '1')
+                                <a href="/admin"
+                                    class="list-group-item list-group-item-action fw-bold text-primary">Administrar
+                                    sitio</a>
+                            @endif
+                            <a href="{{ route('likes') }}" class="list-group-item list-group-item-action fw-bold text-primary">Favoritos</a>
+                            <a href="{{ route('logout') }}"
+                                class="list-group-item list-group-item-action fw-bold text-primary">Logout</a>
+                        </ul>
+                    </div>
+                </div>
+            @endauth
+            @guest
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="fw-bolder mt-3">Login y Registro</h5>
+                        <ul class="list-group mt-3">
+                            <a class="list-group-item list-group-item-action fw-bold text-primary"
+                                href="{{ route('login.view') }}" style="text-decoration: none">Login</a>
+                            <a class="list-group-item list-group-item-action fw-bold text-primary"
+                                href="{{ route('register.view') }}" style="text-decoration: none">Registrate</a>
+                        </ul>
+                    </div>
+                </div>
+            @endguest
+        </div>
+    </div>
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 
