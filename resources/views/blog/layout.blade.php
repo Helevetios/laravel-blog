@@ -21,9 +21,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
-                <form action="" method="POST" class="col-md-10 m-auto mb-2">
+                <form action="{{ route('search') }}" method="GET" class="col-md-10 m-auto mb-2">
                     @csrf
-                    <input type="text" class="form-control shadow-lg mt-2">
+                    <input name="search" type="text" class="form-control shadow-lg mt-2">
                 </form>
 
                 <div class="m-auto text-center">
@@ -49,8 +49,11 @@
             @endguest
 
             <div class="mb-3 ">
-                <input type="text" class="form-control" placeholder="Search">
-                <button class="btn btn-sm btn-primary mt-2">Search</button>
+                <form action="{{ route('search') }}" method="GET">
+                    @csrf
+                    <input name="search" type="text" class="form-control shadow-lg mt-2">
+                    <button type="submit" class="btn btn-sm btn-primary mt-2">Search</button>
+                </form>
             </div>
 
             @auth
@@ -62,7 +65,8 @@
                                     class="list-group-item list-group-item-action fw-bold text-primary">Administrar
                                     sitio</a>
                             @endif
-                            <a href="{{ route('likes') }}" class="list-group-item list-group-item-action fw-bold text-primary">Favoritos</a>
+                            <a href="{{ route('likes') }}"
+                                class="list-group-item list-group-item-action fw-bold text-primary">Favoritos</a>
                             <a href="{{ route('logout') }}"
                                 class="list-group-item list-group-item-action fw-bold text-primary">Logout</a>
                         </ul>
@@ -85,6 +89,20 @@
         </div>
     </div>
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <div class="border-top"></div>
+    <div class="container">
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-4">
+                <li class="nav-item"><a href="{{ route('blog.home') }}" class="nav-link px-2 text-dark">Inicio</a></li>
+                <li class="nav-item"><a href="{{ route('categories') }}" class="nav-link px-2 text-dark">Categorias</a>
+                </li>
+                <li class="nav-item"><a href="{{ route('login.view') }}" class="nav-link px-2 text-dark">Login</a></li>
+                <li class="nav-item"><a href="{{ route('register') }}" class="nav-link px-2 text-dark">Registrate</a>
+                </li>
+            </ul>
+            <p class="text-center text-secondary">© {{date('Y')}} Company, Inc</p>
+        </footer>
+    </div>
 </body>
 
 </html>

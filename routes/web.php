@@ -74,4 +74,8 @@ Route::post('/posts/{post}/like', [LikeController::class, 'like'])->name('posts.
 
 Route::delete('/posts/{post}/unlike', [LikeController::class, 'unlike'])->name('posts.unlike');
 
-Route::get('user/likes',[HomeController::class, 'likes'])->name('likes');
+Route::get('user/likes', [HomeController::class, 'likes'])->name('likes');
+
+Route::get('categories/{id}/posts', [HomeController::class, 'showPosts'])->name('showPosts');
+
+Route::get('search',[HomeController::class, 'search'])->name('search');

@@ -37,4 +37,20 @@ class HomeController extends Controller
         $likes = Like::where('user_id', auth()->user()->id)->get();
         return view('blog.likes', compact('likes'));
     }
+
+    public function showPosts($id)
+    {
+        $posts = Post::where('category_id', $id)->get();
+        $categoryName = Category::find($id);
+        return view('blog.categoriesPosts', compact('posts', 'categoryName'));
+    }
+
+    public function search(Request $request)
+    {
+        $this->validate($request, [
+            'search' => 'required'
+        ]);
+        $searchs = DB::table('posts')->where('name', 'like', '%' . $request->search . '%')->orWhere('description', 'like', '%' . $request->search . '%')->get();
+        return view('blog.search', compact('searchs'));
+    }
 }

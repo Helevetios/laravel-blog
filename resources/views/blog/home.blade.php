@@ -13,7 +13,7 @@
                     <div class="col-md-4 mb-5">
                         <div class="card shadow-lg">
                             <img src="{{ asset('storage') . '/' . $recent->image }}" class="card-img" alt="..."
-                                height="400px" style="object-fit: cover;object-position: 50% 10%;">
+                                height="400px" style="object-fit: cover;object-position: 50% 0%;">
                             <div class="card-img-overlay text-end">
                                 <div class="card-body position-absolute bottom-0 end-0">
                                     <h5 class="card-title text-white fs-4 fw-bolder"
@@ -83,7 +83,7 @@
                                         style="text-shadow: -10px 10px 20px black">
                                         {{ $category->name }}
                                     </h5>
-                                    <button class="btn btn-success btn-sm shadow-lg">Explorar</button>
+                                    <a href="{{ route('showPosts', $category->id) }}" class="btn btn-success btn-sm shadow-lg">Explorar</a>
                                 </div>
                             </div>
                         </div>

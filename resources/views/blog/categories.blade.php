@@ -18,7 +18,8 @@
                                 <h5 class="card-title text-white fs-4 fw-bolder" style="text-shadow: -10px 10px 20px black">
                                     {{ $category->name }}
                                 </h5>
-                                <button class="btn btn-success btn-sm shadow-lg">Explorar</button>
+                                <a href="{{ route('showPosts', $category->id) }}"
+                                    class="btn btn-success btn-sm shadow-lg">Explorar</a>
                             </div>
                         </div>
                     </div>
