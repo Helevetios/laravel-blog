@@ -13,7 +13,7 @@ class PostController extends Controller
 {
     public function posts()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(9);
         return view('admin.posts', compact('posts'));
     }
 

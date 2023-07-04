@@ -29,12 +29,13 @@ class HomeController extends Controller
     {
         $post = Post::find($id);
         $title = $post->name;
-        return view('blog.post', compact('post', 'title'));
+        $recents = DB::table('posts')->orderBy('id', 'desc')->limit(3)->get();
+        return view('blog.post', compact('post', 'title', 'recents'));
     }
 
     public function likes()
     {
-        $likes = Like::where('user_id', auth()->user()->id)->get();
+        $likes = Like::where('user_id', auth()->user()->id)->paginate(12);
         return view('blog.likes', compact('likes'));
     }
 

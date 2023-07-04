@@ -5,11 +5,11 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center align-items-center">
+            <div class="text-end">
+                <a href="{{ route('add.post') }}" class="btn btn-success mt-5 mb-3">Add</a>
+            </div>
             <div class="table-responsive mt-3">
                 <table class="table mb-5 align-items-center">
-                    <div class="text-end">
-                        <a href="{{ route('add.post') }}" class="btn btn-success mt-5 mb-3">Add</a>
-                    </div>
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -51,6 +51,9 @@
             </div>
             <div class="float-end">
             </div>
+        </div>
+        <div class="pagination justify-content-center">
+            {{ $posts->links('vendor.pagination.bootstrap-5') }}
         </div>
     </div>
 @endsection

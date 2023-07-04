@@ -14,7 +14,7 @@ class LoginController extends Controller
         $credentials = $request->getCredentials();
 
         if (!Auth::validate($credentials)) {
-            return redirect(route('login.view'));
+            return redirect(route('login.view'))->withErrors('Usuario o contraseña incorrecto')->withInput();
         }
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);

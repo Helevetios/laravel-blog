@@ -4,12 +4,11 @@
 
 @section('content')
     <div class="container">
-
+        <div class="text-end">
+            <a href="{{ route('categories.add.view') }}" class="btn btn-success mt-5">Add</a>
+        </div>
         <div class="table-responsive mt-3">
             <table class="table mb-5">
-                <div class="text-end">
-                    <a href="{{ route('categories.add.view') }}" class="btn btn-success mt-5">Add</a>
-                </div>
                 <thead>
                     <tr>
                         <th>Name</th>

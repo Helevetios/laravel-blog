@@ -14,10 +14,10 @@
         @else
             <div class="row mt-5">
                 @foreach ($likes as $like)
-                    <div class="col-md-4 mb-5">
+                    <div class="col-md-3 mb-5">
                         <div class="card shadow-lg">
                             <img src="{{ asset('storage') . '/' . $like->post->image }}" class="card-img" alt="..."
-                                height="400px" style="object-fit: cover;object-position: 50% 10%;">
+                                height="350px" style="object-fit: cover;object-position: 50% 10%;">
                             <div class="card-img-overlay text-end">
                                 <div class="card-body position-absolute bottom-0 end-0">
                                     <h5 class="card-title text-white fs-4 fw-bolder"
@@ -33,5 +33,8 @@
                 @endforeach
             </div>
         @endif
+        <div class="pagination justify-content-center">
+            {{ $likes->links('vendor.pagination.bootstrap-5') }}
+        </div>
     </div>
 @endsection
